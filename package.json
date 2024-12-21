@@ -2,15 +2,15 @@
   "name": "mernecom",
   "version": "1.0.0",
   "description": "",
- 
-"scripts": {
-      "dev": "nodemon backend/index.js"
+  "scripts": {
+    "dev": "nodemon backend/index.js"
   },
   "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "mongoose": "^8.9.2"
