@@ -3,27 +3,21 @@ import dotenv from 'dotenv'
 import { connectDB } from './config/db.js'
 import cors from 'cors'
 
+import productRoutes from './routes/product.route.js';
+
+
 dotenv.config()
-
 const app = express();
-
-// Enable CORS
 app.use(cors());
+app.use(express.json());
 
-// respond with "hello world" when a GET request is made to the homepage
-app.get('/', (req, res) => {
-    res.send('Server is up and running ')
-})
+
+app.use("/api/products", productRoutes);
+
 
 const Port = 5000;
+app.listen(Port, (req, res) => {
+    connectDB()
+    console.log(`Server is running at  port ${Port} `);
+})
 
-// Connect to MongoDB first, then start the server
-connectDB()
-    .then(() => {
-        app.listen(Port, () => {
-            console.log(`Server is listening in port ${Port}`)
-        })
-    })
-    .catch(err => {
-        console.error('Failed to connect to MongoDB:', err)
-    })
